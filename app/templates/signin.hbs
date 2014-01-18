@@ -1,0 +1,28 @@
+<form id="signIn" {{action signIn on="submit"}}>
+	<fieldset>
+		<legend>Sign In</legend>
+		{{user-form email=email password=password}}
+		{{input type="submit" class="btn btn-default"value="Sign In"}}
+	</fieldset>
+</form>
+<form  {{action launchkey on="submit"}}>
+	<fieldset>
+        <legend>LaunchKey</legend>
+        <div class="field-group">
+    		<label>LaunchKey Username</label>
+    		<div class="input-group">
+    			{{input name="username" class="form-control" type="text" value=username}}
+    			<span class="input-group-btn">
+                    {{input  type="submit" class="btn btn-default" value="Sign In"}}  
+    			</span>
+    		</div>
+        </div>
+	</fieldset>
+</form>
+<form>
+    <fieldset>
+        <legend>Clef</legend>
+        <div id="clef-container"></div>
+    </fieldset>
+</form>
+{{#link-to "signup"}}Sign Up{{/link-to}}

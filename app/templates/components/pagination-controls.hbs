@@ -1,0 +1,26 @@
+{{log pageInfo}}
+<ul class="pagination">
+  {{#if pageInfo.pageMOne}}
+      <li>{{#link-to pageRoute page=pageInfo.pageMOne}}&laquo;{{/link-to}}</li>
+  {{else}}
+    <li class="disabled"><a>&laquo;</a></li>
+  {{/if}}
+  {{#if pageInfo.pageMTwo}}
+      <li>{{#link-to pageRoute (query-params page=pageInfo.pageMTwo) }}{{pageInfo.pageMTwo}}{{/link-to}}</li>
+  {{/if}}
+  {{#if pageInfo.pageMOne}}
+      <li>{{#link-to pageRoute (query-params page=pageInfo.pageOne)}}{{pageInfo.pageMOne}}{{/link-to}}</li>
+  {{/if}}
+  <li class="active">{{#link-to pageRoute (query-params page=pageInfo.page)}}{{pageInfo.page}}{{/link-to}}</li>
+  {{#if pageInfo.pageOne}}
+      <li>{{#link-to pageRoute (query-params page=pageInfo.pageOne)}}{{pageInfo.pageOne }}{{/link-to}}</li>
+  {{/if}}
+  {{#if pageInfo.pageTwo}}
+      <li>{{#link-to pageRoute (query-params page=pageInfo.pageOne)}}{{pageInfo.pageTwo}}{{/link-to}}</li>
+  {{/if}}
+  {{#if pageInfo.pageOne}}
+      <li>{{#link-to pageRoute (query-params page=pageInfo.pageOne)}}&raquo;{{/link-to}}</li>
+  {{else}}
+      <li class="disabled"><a>&raquo;</a></li>
+  {{/if}}
+</ul>

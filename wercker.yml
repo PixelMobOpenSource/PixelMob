@@ -1,0 +1,10 @@
+box: wisesascha/ubuntu12.04-ffmpeg-ruby@0.0.1
+services:
+    - wercker/mongodb
+    - wercker/redis
+build: 
+    steps: 
+        - bundle-install
+        - script:
+            name: rake
+            code: "bundle exec rake"

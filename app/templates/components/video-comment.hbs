@@ -1,0 +1,16 @@
+{{#view PixelMob.CommentView commentBinding=comment}}
+<div class="comment">
+	<div class="media">
+		<a class="pull-left">
+			<img class="media-object" {{bindAttr src=comment.user.gravatar_url}}/>
+		</a>
+		<div class="media-body">
+			<h5 class="media-heading">{{comment.user.email}}</h5>
+			{{{comment.content}}}
+			<button class="btn btn-primary btn-mini newCommentButton" {{action "newComment" target="view"}} {{bindAttr id="comment.id"}}>Reply</button>
+			{{#each comment in comment.child_comments}}
+				{{video-comment comment=comment}}
+			{{/each}}
+		</div>
+	</div>
+{{/view}}

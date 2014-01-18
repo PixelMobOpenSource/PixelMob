@@ -1,0 +1,21 @@
+{
+  "name": "pixelmob",
+  "version": "0.0.0",
+  "dependencies": {
+    "jquery": "1.9.1",
+    "handlebars": "~1.0.0",
+    "components-font-awesome": "~4.0.0",
+    "jquery-file-upload": "8.2.1",
+    "jquery.lazyload": "1.8.4",
+    "jquery.validation": "~1.11.1",
+    "sass-bootstrap": "~2.3.2",
+    "wysihtml5": "~0.3.0",
+    "videojs.persistvolume.js": "https://github.com/theonion/videojs.persistvolume.js.git",
+    "bootstrap": "~3.0.0",
+    "ember": "~1.0.0-rc.7",
+    "ckeditor": "git://github.com/ckeditor/ckeditor-releases.git#stable/standard",
+    "ember-data-shim": "~0.0.13",
+    "ember-states": "https://github.com/emberjs/ember-states.git"
+  },
+  "devDependencies": {}
+}

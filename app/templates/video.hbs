@@ -1,0 +1,61 @@
+<div id="header">
+	<div style="font-size:24px;">
+	    <div class="btn-group">
+    		{{#if owned}}
+    			{{#link-to "edit_video" this class="btn btn-primary btn-mini"}}
+    				Edit 
+    			{{/link-to}}
+    		{{/if}}
+    	<div class="btn-group">
+		<a class="btn btn-default dropdown-toggle" data-toggle="dropdown" href="#">
+			<i class="fa fa-cog"></i>
+			<span class="caret"></span>
+		</a>
+		<ul class="dropdown-menu">
+			<li><a tabindex="-1" {{action "large" target="view"}}>Large</a></li>
+			<li><a tabindex="-1" {{action "small" target="view"}}>Small</a></li>
+		</ul>
+	</div>
+	{{#if channel.subscribed }}<button {{action "unsubscribe" target="view"}} id="subscribeButton" class="btn btn-danger">Unsubscribe</button>{{else}} <button {{action "subscribe" target="view"}} class="btn btn-primary" id="subscribeButton">Subscribe</button>{{/if}}
+		</div>
+		{{name}} 
+		<span style="font-size:15px;">
+			by {{#link-to "channel" channel}}
+				{{channel.name}}
+			{{/link-to}}
+			{{#if game}}
+    			playing
+    			{{#link-to game game}}
+    				{{game.title}}
+    			{{/link-to}}
+    		{{/if}}
+		</span>
+		<span style="font-size:12px;">
+		    {{views}} <i class="fa fa-eye"></i>
+		    </span>
+	</div>
+</div>
+<div>		
+
+</div>
+<video {{bindAttr id="id"}} controls class="video-js vjs-default-skin " preload="none" {{bindAttr poster=file.file.poster.url}}>
+		{{#if is1080p}}<source {{bindAttr src=file.file.hd1080p.url}}  type="video/mp4" data-res="1080p"/>{{/if}}
+		{{#if is720p}}<source {{bindAttr src=file.file.hd720p.url}} type="video/mp4" data-res="720p"/>{{/if}}
+		<source {{bindAttr src=file.file.sd.url}} type="video/mp4" data-res="360p" />
+</video>
+<h5>Tags</h5>
+{{#each tag in tags}}
+	{{#link-to "tag" tag class="btn btn-primary btn-sm"}}{{tag.name}}{{/link-to}}
+{{/each}}
+<img id="companionAd1"> </img>
+<p>{{{description}}}</p>
+{{#view PixelMob.CommentView}}
+	<button class="btn btn-primary btn-mini newCommentButton" {{action "newComment" target="view"}} {{bindAttr id="comment.id"}}>Reply</button>
+{{/view}}
+<div id="comments">
+	{{#each comment in comments}}
+		{{#if comment.parent_comment}} {{else}}
+			{{video-comment comment=comment}}
+		{{/if}}
+	{{/each}}
+</div>

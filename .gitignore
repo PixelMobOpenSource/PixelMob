@@ -1,0 +1,16 @@
+/.bundle
+/log/*.log
+/tmp
+.tmp
+tags
+public/uploads/
+.DS_Store
+coverage/
+node_modules
+temp
+dist
+.sass-cache
+app/components
+.c9revisions
+#config/launchkey_keypair.pem
+#/config/application.yml

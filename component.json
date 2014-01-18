@@ -1,0 +1,16 @@
+{
+  "name": "pixelmob",
+  "version": "0.0.0",
+  "dependencies": {
+    "jquery": "1.9.1",
+    "bootstrap-js": "~0.0.0",
+    "bootstrap-wysihtml5",
+    "components-font-awesome": "~4.0.0",
+  	"jquery-file-upload": "8.2.1",
+  	"jquery.lazyload": "1.8.4",
+  	"jquery.validation": "~1.11.1",
+  	"sass-bootstrap": "~2.3.2",
+  	"wysihtml5": "~0.3.0"
+  },
+  "devDependencies": {}
+}

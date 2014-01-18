@@ -1,0 +1,86 @@
+<div id="main">
+    <div class="container clear-top">
+        <div class="col-sm-10 col-md-1">
+            <div class="navContainer">
+                    <div class="nav">
+                        {{#view PixelMob.SlidableNavView}}
+                            <div class="list-group nav-list-group" id="nav">
+                                <a class="list-group-item cshowenDefaultElem navItem" >
+                                    <img src="/images/PixelMob.png" class="hidden-md-inline navImage" height="40px" width="40px" ></img>
+                                    <img  class="visible-md-inline" src="/images/PixelMobWide.png" width="50%"></img>
+                                </a>
+                                <div id="hiddenDefaultElems">
+                                    {{#link-to "subscriptions" class="navItem list-group-item hiddenDefaultElem navTooltip" }}
+                                        <i class="fa fa-home fa-3x"> </i>
+                                        <span class="extraText visible-md-inline">Home</span>
+                                    {{/link-to}}
+                                    {{#if controllers.currentUser }}
+                                        {{#link-to 'upload_container' data-toggle="tooltip" title="first tooltip" class="navItem navTooltip list-group-item hiddenDefaultElem"  }} 
+                                            <i class="fa fa-upload fa-3x"> </i>
+                                            <span class="extraText visible-md-inline">Upload</span>
+                                        {{/link-to}}
+                                        {{#link-to "signoff" class="navItem navTooltip list-group-item hiddenDefaultElem"  }}
+                                            <i class="fa fa-sign-out fa-3x"> </i>
+                                            <span class="extraText visible-md-inline">Sign Out</span>
+                                        {{/link-to}}
+                                        {{#link-to "dashboard" class="navItem navtooltip list-group-item hiddenDefaultElem" }}
+                                            <img width="45px"  {{bindAttr src="controllers.currentUser.gravatar_url"}}></img>
+                                            <span class="extraText avatartext visible-md-inline">Dashboard</span>
+                                        {{/link-to}}
+                                    {{else}}
+                                        {{#link-to "signin" class="navItem navTooltip list-group-item hiddenDefaultElem" }}
+                                            <i class="fa fa-sign-in fa-3x"> </i>
+                                            <span class="extraText visible-md-inline">Sign In</span>
+                                        {{/link-to}}
+                                    {{/if}}
+                                    <a class="list-group-item hiddenDefaultElem visible-xs ">
+                                        {{#view PixelMob.SearchView class="" }}
+                                            <form class="form-inline ">
+                                                <div class="field-group">
+                                                    <div class="input-group">
+                                                        {{view Ember.TextField placeholder="Search" id="searchBox" valueBinding="view.search" class="input-sm form-control col-xs-2 search-query"}}
+                                                        <span class="input-group-btn">
+                                                            <button {{action "search" view.search}} type="submit" class="btn btn-default btn-sm"><i class="fa fa-search"></i></button>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                            </form>    
+                                        {{/view}}
+                                    </a>                    
+                            </div>
+                                <a class="list-group-item showenDefaultElem navBoxArrow navItem" href="#" {{action "arrowClick" target="view" on="click"}}  id="DownArrow">
+                                    <i class="fa fa-angle-down navBoxArrowIcon navBoxArrow fa-2x"></i>
+                                </a>
+                            </div>
+                        {{/view}}
+                    </div>
+                </div>    
+            </div>
+            <div class="col-xs-10">
+                {{outlet}}            
+            </div>
+        </div>
+    </div>
+</div>
+{{#view PixelMob.SearchView class="search" }}
+    <form class="form-inline visible-sm visible-md visible-lg">
+        <div class="field-group">
+            <div class="input-group">
+                {{view Ember.TextField placeholder="Search" valueBinding="view.search"  class="input-sm form-control col-xs-2 search-query"}}
+                <span class="input-group-btn">
+                    <button {{action "search" view.search}} type="submit" class="btn btn-default btn-sm"><i class="fa fa-search"></i></button>
+                </span>
+            </div>
+        </div>
+    </form>    
+{{/view}}
+<footer class="footer">
+    <hr>
+    <div class="footerElem col-sm-3">
+        <legend>Info</legend> 
+        PixelMob &copy; <a href="http://saschawise.com">Sascha Wise</a> 2012-2013
+    </div>
+    <div class="footerElem col-sm-3">
+        <legend>Settings</legend> 
+    </div>
+</footer>

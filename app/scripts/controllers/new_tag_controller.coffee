@@ -1,0 +1,1 @@
+PixelMob.NewTagController = Ember.ObjectController.extend({})

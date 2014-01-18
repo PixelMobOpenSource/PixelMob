@@ -1,0 +1,16 @@
+
+<legend>Videos  {{controller.isLoaded}}</legend>
+<div id="buttons">
+<div class="btn-group" data-toggle="buttons-radio">
+	<button class="btn btn-primary" type="button" {{action "sort" "name"}}>Sort By Name</button>
+	<button class="btn btn-primary" type="button" {{action "sort" "description"}}>Sort By Description</button>
+	<button class="btn btn-primary" type="button" {{action "sort" "rank"}}>Sort By Rank</button>
+</div>
+<button class="btn" {{action "toggleAcending"}} >Toggle Order</button>
+</div>
+<div class="row">
+	{{#each video in controller}}
+    	{{video-thumbnail video=video currentUser=controllers.currentUser}}
+	{{/each}}
+</div>
+{{pagination-controls pageRoute='video_search' pageInfo=pageInfo}}

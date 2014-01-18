@@ -1,0 +1,40 @@
+<div class="col-sm-4 video-thumbnail">
+	{{#link-to "video" video style="height:139px;" class="thumbnail"}} 
+		<img class="video-thumbnail-image" {{bind-attr src="video.file.file.thumb.url"}} alt="">
+	{{/link-to}}
+        <div class="col-xs-2 col-sm-3  thumbCol">
+            {{#link-to "channel" video.channel }}
+                <img {{bindAttr src="video.channel.avatar.avatar.url"}}  style="width:100%;"></img>
+            {{/link-to}}
+        </div>
+            <div class="col-sm-9 thumbCol">
+    	{{#if currentUser}}
+    	    <div class="btn-group-vertical">
+    	        {{#if video.upVoted}} 
+        	        <label class="btn btn-info btn-xs active" {{action 'upVote' video  }}> 
+        	            {{video.upVotes}}
+        	            <i class="fa fa-arrow-up"></i>
+                    </label>
+    	        {{else}}
+           	        <label class="btn btn-info btn-xs" {{action 'upVote' video  }}> 
+           	            {{video.upVotes}}
+        	            <i class="fa fa-arrow-up"></i>
+                    </label>
+    	        {{/if}}
+
+                <label class="btn btn-danger btn-xs" {{action 'downVote' video target="controller"}}>
+    	            {{video.downVotes}}
+    	            <i class="fa fa-arrow-down"></i>
+                </label>
+                {{#if video.owned}}
+    	            {{#link-to "edit_video" video class="btn btn-primary btn-xs"}}
+    	                <i class="fa-pencil fa"></i>
+    	            {{/link-to}}
+    	        {{/if}}
+    
+            </div>
+        {{/if}}
+        <span class="video-thumbnail-title">{{video.name}}  {{#link-to "channel" video.channel }} {{/link-to}} </span>
+        <span style="font-size:12px;">{{video.views}} <i class="fa fa-eye"></i></style>
+    </div>
+</div>

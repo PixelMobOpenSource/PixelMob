@@ -1,0 +1,18 @@
+<div class='form-group'>
+	{{#unless hideLabel}}
+		<label for='channel'>Channel</label>
+	{{/unless}}
+	{{view PixelMob.Select2 
+		content=channels
+		optionValuePath="content.id"
+		optionLabelPath="content.name"
+		model = "Channel"
+		extraContent="<option>New Channel</option>"
+		width="250px"
+		templateFormat= "<% srcAvatar %> {{content.text}}"
+		value=channel_id
+		prompt="Select a Channel"
+		id="channel"
+		
+	}}
+</div>

@@ -1,0 +1,1 @@
+PixelMob.TagView = Ember.View.extend({})

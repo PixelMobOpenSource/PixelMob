@@ -1,0 +1,8 @@
+<div class="span2"><img {{bindAttr src=cover.cover.url}} class="largeImage" style="height:200px;"></img></div>
+<div class="span6">{{description}}</div>
+<legend>{{name}}</legend>
+<ul class="thumbnails">
+{{#each video in videos}}
+	{{partial thumbnail}}
+{{/each}}
+</ul>

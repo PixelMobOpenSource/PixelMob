@@ -1,0 +1,170 @@
+@import url(http://fonts.googleapis.com/css?family=PT+Sans);
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the top of the
+ * compiled file, but it's generally better to create a new file per style scope.
+ *
+ *= require_self
+ *= require app_bootstrap
+ *= require_tree .
+ *= require bootstrap-wysihtml5
+ *= require glimpse
+ */
+/* line 18, ../../app/styles/style.scss */
+.wysihtml5#description {
+  width: 750px;
+  padding-top: 10px;
+  height: 250px;
+}
+
+/* line 23, ../../app/styles/style.scss */
+.largeImage {
+  border-right: 1px solid #e5e5e5;
+  padding-right: 10px;
+}
+
+/* line 27, ../../app/styles/style.scss */
+html, body {
+  height: 100%;
+}
+
+/* line 30, ../../app/styles/style.scss */
+.comment {
+  margin: 10px;
+  border-left: 1px solid #eeeeee;
+  border-top: 1px solid #eeeeee;
+  padding: 10px;
+}
+/* line 35, ../../app/styles/style.scss */
+.comment img {
+  width: 50px;
+}
+/* line 38, ../../app/styles/style.scss */
+.comment .body {
+  margin-left: 50px;
+  margin-top: -32px;
+  margin-bottom: 32px;
+}
+
+/* line 44, ../../app/styles/style.scss */
+#wrap {
+  min-height: 500px;
+  padding-top: 30px;
+  padding-left: 75px;
+  height: auto !important;
+}
+
+/* line 50, ../../app/styles/style.scss */
+#ember313 {
+  height: 100%;
+}
+
+/* line 53, ../../app/styles/style.scss */
+#main {
+  overflow: auto;
+  padding-bottom: 150px;
+  /* this needs to be bigger than footer height*/
+}
+
+/* line 58, ../../app/styles/style.scss */
+.footer {
+  position: relative;
+  height: 150px;
+  clear: both;
+  padding-top: 20px;
+}
+
+/* line 64, ../../app/styles/style.scss */
+body {
+  font-family: PT Sans;
+}
+
+/* line 68, ../../app/styles/style.scss */
+.thumbnails .thumbnail {
+  width: 260px;
+  height: 146px;
+}
+
+@font-face {
+  font-family: Entypo;
+  src: url("/entypo.ttf");
+}
+
+/* line 78, ../../app/styles/style.scss */
+.navBox img {
+  margin-left: 5px;
+  margin-bottom: -10px;
+}
+
+/* line 83, ../../app/styles/style.scss */
+.navBoxArrow {
+  margin-left: 16px;
+}
+
+/* line 86, ../../app/styles/style.scss */
+.lazyImg {
+  height: 146px;
+}
+
+/* line 89, ../../app/styles/style.scss */
+.icon {
+  font-family: Entypo;
+  text-align: center;
+  width: 50px;
+  height: 50px;
+  padding-top: 10px;
+  border-bottom: 1px solid #282828;
+}
+/* line 96, ../../app/styles/style.scss */
+.icon img {
+  width: 40px;
+}
+/* line 99, ../../app/styles/style.scss */
+.icon img.hover {
+  box-shadow: 0px 0px 2px #3df8ff;
+}
+/* line 102, ../../app/styles/style.scss */
+.icon a:hover {
+  text-shadow: 0px 0px 2px #3df8ff;
+  color: #000;
+  text-decoration: none;
+}
+/* line 107, ../../app/styles/style.scss */
+.icon a {
+  text-decoration: none;
+  color: #000;
+}
+
+/* line 112, ../../app/styles/style.scss */
+.searchContainer {
+  top: 15px;
+  right: 10px;
+  position: fixed;
+}
+
+/* line 117, ../../app/styles/style.scss */
+.navBox {
+  top: 15px;
+  left: 10px;
+  position: fixed;
+  width: 50px;
+  height: 50px;
+  box-shadow: 0px 0px 2px #000;
+  background: #fff;
+}
+
+/* line 126, ../../app/styles/style.scss */
+.navBoxSlideDown {
+  display: none;
+  position: fixed;
+  top: 15px;
+  left: 10px;
+  width: 50px;
+  box-shadow: 0px 0px 2px #000;
+  background: #fff;
+}

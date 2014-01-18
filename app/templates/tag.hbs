@@ -1,0 +1,6 @@
+<legend>{{name}}</legend>
+<div class="row">
+    {{#each video in videos}}    
+	    {{video-thumbnail video=video currentUser=controllers.currentUser}}
+    {{/each}}
+</div>

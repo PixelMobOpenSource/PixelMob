@@ -1,0 +1,12 @@
+<div class="field-group">
+	<label>Name</label>
+	<input class="form-control" id="name" {{bindAttr value="view.channel.name"}} name="name" type="TEXT"/>
+</div>
+<div class="field-group">
+	<label>Avatar</label>
+	<input class="form-control" id="file" type="file"/></br>
+</div>
+<div class="field-group">
+	<label>Description</label>
+	{{view Ember.TextArea class="ckeditor" id="channelDescription" valueBinding="channel.description"}}</br>
+</div>

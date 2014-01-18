@@ -1,0 +1,49 @@
+<legend>{{view.name}}</legend>
+<div class="progress progress-striped active">
+<div class="progress-bar" role="progressbar" aria-valuemin="0" aria-valuenow="0" aria-valuemax="100" style="width:0%;" id="progressbar"></div>
+</div>
+<span id="uploadSpeed"></span>
+<span id="uploadTime"></span>
+<div class='form-group'>
+	<label for='name'>Name</label>
+	{{input value=view.name class="form-control uploadFormElement"}}
+</div>
+<video controls {{bindAttr id=view.videoID}} class="video-js vjs-default-skin " preload="auto">
+		<source {{bindAttr src=view.videoURL}} type="video/mp4"/>
+</video>
+<form>
+<div class='form-group'>
+	<label for='description'>Description</label>
+	<textarea name='description' {{bind-attr value="view.description"}} class='ckeditor description uploadFormElement' id='#{msg}'></textarea>
+</div>
+<div class='form-group'>
+	<label for='vast'>VAST (Ads)</label>
+	<textarea class='form-control uploadFormElement' {{bind-attr value="view.vast"}} id="vast"></textarea>
+</div>
+	{{view PixelMob.Select2 
+		content=controllers.currentUser.channels
+		optionValuePath="content.id"
+		optionLabelPath="content.name"
+		model = "Channel"
+		class="uploadFormElement"
+		extraContent="<option>New Channel</option>"
+		width="250px"
+		templateFormat= "<% srcAvatar %> {{content.text}}"
+		value=channel_id
+		prompt="Select a Channel"
+		id="channel"
+		
+	}}
+<div class='form-group'>
+	<label for='tag'>Tags</label>
+	<select  id='tag' style="width:100%;" {{bind-attr value="view.tag_ids"}} multiple class='uploadFormElement' name='tags'>
+		{{#each tag in view.tags}}
+			<option {{bind-attr value="tag.id"}}>{{tag.name}}</option>
+		{{/each}}
+	</select>
+</div>
+<div class='form-group'><input type='text' class='uploadFormElement' id='games'/></div>
+<input type='submit' {{action 'save' target="view"}} id='submit' class='btn btn-primary' name='button'/> <span id='loading'>Saved</span></div>
+
+</form>
+
