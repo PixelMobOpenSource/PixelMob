@@ -4,6 +4,7 @@ PixelMob.EditVideoRoute = Ember.Route.extend
     setupController: (controller, model) ->
         @controllerFor("edit_video").set "content", model
     serialize: (model) ->
-        return
+        return {
             video_token: model.get('token')
             video_slug: model.get('slug')
+        }

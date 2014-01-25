@@ -7,4 +7,4 @@ PixelMob.SubscriptionsRoute = Ember.Route.extend
         @controllerFor("subscriptions").set "content", model
     actions:
             queryParamsDidChange: ->
-                @controllerFor('subscriptions').set "content", PixelMob.Video.findQuery({page: @controllerFor('subscriptions').get "page", subscriptions: true})
+                @controllerFor('subscriptions').set "content", PixelMob.Video.findQuery({page: @controllerFor('subscriptions').get( "page"), subscriptions: true})
