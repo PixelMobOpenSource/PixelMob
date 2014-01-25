@@ -159,7 +159,7 @@ class Video
     end
     def is_video
         if(self.file.path != nil)
-            self.file.path.split('/').last != "_old_"
+            self.file.path.split('/').last != "_old_" && self.channel != nil && self.name != nil
         else
             false
         end
