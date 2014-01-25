@@ -15,11 +15,14 @@ PixelMob.Video = Ember.Model.extend
     downVoted:   Ember.attr()
     upVotes:     Ember.attr()
     downVotes:   Ember.attr()
-    smallName:   Ember.attr()
     is1080p:     Ember.attr()
     token:       Ember.attr()
     is720p:      Ember.attr()
     slug:        Ember.attr()
+    smallName:  ( ->
+        if(@get('name'))
+            Ember.String.htmlSafe(@get('name')).trunc(25)
+    ).property('name')
     url:         ( ->
         "/#/videos/" + @get("id")
     ).property("id")

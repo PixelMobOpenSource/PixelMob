@@ -59,4 +59,5 @@ Ember.Application.initializer
 		), "text"
 Ember.LinkView.reopen
     attributeBindings: ['data-toggle']
-
+String::trunc = String::trunc or (n) ->
+  (if @length > n then @substr(0, n - 1) + "&hellip;" else this)
