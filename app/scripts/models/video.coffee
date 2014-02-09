@@ -20,8 +20,7 @@ PixelMob.Video = Ember.Model.extend
     is720p:      Ember.attr()
     slug:        Ember.attr()
     smallName:  ( ->
-        if(@get('name'))
-            Ember.String.htmlSafe(@get('name')).trunc(25)
+        Ember.String.htmlSafe(@get('name')).string.trunc(25)
     ).property('name')
     url:         ( ->
         "/#/videos/" + @get("id")
