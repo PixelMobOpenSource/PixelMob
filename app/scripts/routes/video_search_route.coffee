@@ -1,16 +1,16 @@
 PixelMob.VideoSearchRoute = Ember.Route.extend
     page: 0
     search: 0
-    model: (params,queryParams)->
-        console.log queryParams
-        if(queryParams["page"])
-            @set('page',queryParams.page)
-            @set('search',queryParams.search)
-            return PixelMob.Video.findQuery({page: queryParams.page, search: queryParams.search})
+    model: (params)->
+        console.logparams
+        if(params["page"])
+            @set('page',params.page)
+            @set('search',params.search)
+            return PixelMob.Video.findQuery({page: params.page, search: params.search})
         else
             @set('page',1)
-            @set('search',queryParams.search)
-            return    PixelMob.Video.findQuery({page: 1, search: queryParams.search})
+            @set('search',params.search)
+            return    PixelMob.Video.findQuery({page: 1, search: params.search})
     setupController: (controller, model) ->
         pageInfo = {}
         pageInfo.page = @get('page')

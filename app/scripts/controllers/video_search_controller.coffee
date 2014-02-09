@@ -1,5 +1,6 @@
 PixelMob.VideoSearchController = Ember.ArrayController.extend
     needs: ['currentUser']
+    queryParams: ['search','page']
     pageInfo: {}
     actions:
         sort: (e) ->
