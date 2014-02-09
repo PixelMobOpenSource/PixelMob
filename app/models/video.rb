@@ -40,8 +40,7 @@ class Video
     def upVotes
             self.upVotedUsers.length
     end
-    def progressCallback(dict)
-        progress = dict[0]
+    def progressCallback(progress)
         if(progress == 1) then
             self.progress =+ self.tempProgress
         end
