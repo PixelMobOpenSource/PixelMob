@@ -31,4 +31,12 @@ class VideoUploader < CarrierWave::Uploader::Base
     def png_name for_file, version_name
         %Q{#{version_name}_#{for_file.chomp(File.extname(for_file))}.png}
     end
+    def is_720p? video
+        movie = FFMPEG::Movie.new(video.path)
+        movie.width >= 1280 && movie.height >= 720
+    end
+    def is_1080p? video
+        movie        = FFMPEG::Movie.new(video.path)
+        movie.width >= 1920 && movie.height >= 1080
+    end
 end
