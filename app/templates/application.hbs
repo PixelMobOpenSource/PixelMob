@@ -15,7 +15,7 @@
                                         <span class="extraText visible-md-inline">Home</span>
                                     {{/link-to}}
                                     {{#if controllers.currentUser }}
-                                        {{#link-to 'upload_container' data-toggle="tooltip" title="first tooltip" class="navItem navTooltip list-group-item hiddenDefaultElem"  }} 
+                                        {{#link-to 'upload_container' data-toggle="tooltip" title="first tooltip" class="navItem navTooltip list-group-item hiddenDefaultElem"  }}
                                             <i class="fa fa-upload fa-3x"> </i>
                                             <span class="extraText visible-md-inline">Upload</span>
                                         {{/link-to}}
@@ -44,9 +44,9 @@
                                                         </span>
                                                     </div>
                                                 </div>
-                                            </form>    
+                                            </form>
                                         {{/view}}
-                                    </a>                    
+                                    </a>
                             </div>
                                 <a class="list-group-item showenDefaultElem navBoxArrow navItem" href="#" {{action "arrowClick" target="view" on="click"}}  id="DownArrow">
                                     <i class="fa fa-angle-down navBoxArrowIcon navBoxArrow fa-2x"></i>
@@ -54,10 +54,10 @@
                             </div>
                         {{/view}}
                     </div>
-                </div>    
+                </div>
             </div>
             <div class="col-xs-10">
-                {{outlet}}            
+                {{outlet}}
             </div>
         </div>
     </div>
@@ -72,15 +72,27 @@
                 </span>
             </div>
         </div>
-    </form>    
+    </form>
 {{/view}}
 <footer class="footer">
     <hr>
     <div class="footerElem col-sm-3">
-        <legend>Info</legend> 
+        <legend>Info</legend>
         PixelMob &copy; <a href="http://saschawise.com">Sascha Wise</a> 2012-2013
     </div>
     <div class="footerElem col-sm-3">
-        <legend>Settings</legend> 
+        <legend>Links</legend>
+        <div class="col-sm-6">
+            <ul class="list-group">
+                {{#link-to "subscriptions" class="list-group-item"}}Home{{/link-to}}
+                {{#link-to "upload_container" class="list-group-item"}}Upload{{/link-to}}
+            </ul>
+        </div>
+        <div class="col-sm-6">
+            <ul class="list-group">
+                {{#link-to "dashboard" class="list-group-item"}}Dashboard{{/link-to}}
+                {{#link-to "videos" class="list-group-item"}}Videos{{/link-to}}
+            </ul>
+        </div>
     </div>
 </footer>
