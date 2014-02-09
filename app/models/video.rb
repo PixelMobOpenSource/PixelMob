@@ -40,23 +40,8 @@ class Video
     def upVotes
             self.upVotedUsers.length
     end
-    def progressCallback360p(progress)
-        progressMultipler = 1
-        if(self.is1080p)
-            progressMultipler = 0.33
-        elsif (self.is720p)
-            progressMultipler = 0.66
-        end
-        self.progress360p = progress * 100 * progressMultipler
-        EM.run {
-            client = Faye::Client.new("http://localhost:8008/faye")
-            publication = client.publish('/videoProgress/' + self.id, :progress => self.progress360p + self.progress1080p + self.progress720p)
-            publication.callback    do
-                EM.stop
-            end
-        }
-    end
-    def progressCallback(progress)
+    def progressCallback(dict)
+        progress = dict[0]
         if(progress == 1) then
             self.progress =+ self.tempProgress
         end
@@ -143,7 +128,7 @@ class Video
     end
 
     def is1080p
-        if(self.is_video)    then
+        if(self.is_processed)    then
             m = FFMPEG::Movie.new(self.file.path)
             m.width >= 1920 && m.height >= 1080
         elsif(File.exist?(Rails.root.to_s + "/public/tmp" + self.file_tmp))
@@ -164,11 +149,18 @@ class Video
             false
         end
     end
+    def is_processed
+        if(self.file.path != nil)
+            self.file.path.split('/').last != "_old_"
+        else
+            false
+        end
+    end
     def isProcessing
         (self.tempProgress != 0)
     end
     def is720p
-        if(self.is_video)    then
+        if(self.is_processed)    then
             m = FFMPEG::Movie.new(self.file.path)
             m.width >= 1280 && m.height >= 720
         elsif(File.exist?(Rails.root.to_s + "/public/tmp" + self.file_tmp))
