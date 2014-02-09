@@ -1,5 +1,8 @@
 PixelMob.DashboardController = Ember.ObjectController.extend({
     needs: ['currentUser']
+    queryParams: ['video_page', 'channel_id']
+    video_page: null
+    channel_id: ''
     launchkey: ->
         user = @get('username')
         $.ajax

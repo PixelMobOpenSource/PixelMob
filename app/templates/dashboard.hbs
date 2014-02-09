@@ -1,27 +1,16 @@
 <legend>Dashboard
-{{channel-select hideLabel="true" channels=controllers.currentUser.channels channel_id=view.channel_id}}
+{{channel-select hideLabel="true" channels=controllers.currentUser.channels channel_id=controller.channel_id}}
 
 </legend>
 {{name}}
 <div class="row">
 {{channel.name}}
 <h4 class="dashboardTitle" >Videos</h4>
-{{#if view.ifAllVideos}}
 <ul class="thumbnails">
-	{{#each channel in controllers.currentUser.channels}}
-		{{#each video in channel.videos}}
-			{{video-thumbnail video=video currentUser=controllers.currentUser}}
-		{{/each}}
-	{{/each}}
-</ul>
-{{/if}}
-{{#if view.ifVideos}}
-<ul class="thumbnails">
-	{{#each video in view.videos}}
+	{{#each video in videos}}
 		{{video-thumbnail video=video currentUser=controllers.currentUser}}
 	{{/each}}
 </ul>
-{{/if}}
 </div>
 {{#if view.ifVideos}}
 <div class="col-sm-6">
