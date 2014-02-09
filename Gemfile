@@ -18,7 +18,7 @@ gem 'guard-livereload'
 gem 'puma'
 gem 'rmagick'
 gem 'pry-rails'
-gem 'launchkey'
+gem 'launchkey', :github  => 'wisesascha/launchkey-ruby'
 gem 'httparty'
 gem 'figaro'
 gem 'faye'
@@ -38,7 +38,7 @@ gem 'devise', :github => 'plataformatec/devise', :branch => 'rails4', :ref => '6
 gem 'active_model_serializers', :github => 'rails-api/active_model_serializers'
 gem 'sanitize'
 gem 'gravtastic'
-## Sidekiq - Start 
+## Sidekiq - Start
 gem 'sidekiq'
 gem 'slim'
 gem 'sinatra', '>= 1.3.0', :require => nil
@@ -61,7 +61,7 @@ gem 'carrierwave-video', :github => 'wisesascha/carrierwave-video'
 gem 'carrierwave-video-thumbnailer'
 gem 'carrierwave_backgrounder'
 gem 'carrierwave-mongoid', :require => 'carrierwave/mongoid'
-gem 'streamio-ffmpeg'
+gem 'streamio-ffmpeg', :github => 'wisesascha/streamio-ffmpeg'
 ## Carrierwave - End
 
 ## BetterErrors - Start
@@ -76,6 +76,6 @@ end
 		gem 'guard-shell'
 	end
 ## Guard - End
-
+gem "faraday"
 gem "omniauth"
 gem "omniauth-clef"
