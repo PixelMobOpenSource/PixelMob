@@ -5,7 +5,6 @@ PixelMob.NewChannelView = Ember.View.extend
 		clone.slideUp(500, "easeInOutQuad")
 	didInsertElement: ->
 		this.$().slideUp(0);
-		$('ckeditor').ckeditor()
 		this.$().slideDown(500);
 		console.log("test")
 		$('#file').fileupload
@@ -25,4 +24,3 @@ PixelMob.NewChannelView = Ember.View.extend
 							name: $('#name').val()
 					url: "/api/channels/" + id
 				)
-		
