@@ -42,7 +42,7 @@ describe "Videos" do
 			sleep(1)
 		end
 		get '/api/videos/'
-			Video.all.select(&:is_video).last.id.to_s.should == JSON.parse(response.body)[:videos].last["id"]
+			Video.exists(channel_id: true).exists(name: true).where(processing: false).last.id.to_s.should == JSON.parse(response.body)[:videos].last["id"]
 		end
 	end
  describe "Get Video" do
