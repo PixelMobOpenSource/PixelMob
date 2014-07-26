@@ -4,11 +4,11 @@ FactoryGirl.define do
 		email {Forgery(:internet).email_address}
 		password "password"
 	end
-	factory :video do 
+	factory :video do
 		name { Forgery(:lorem_ipsum).words(1) }
 		description {Forgery(:lorem_ipsum).words(10)}
-		file { fixture_file_upload("spec/files/The_Harlem_Shake_v2__1_.mp4","type/mp4") } 
-		processing true
+		file { fixture_file_upload("spec/files/The_Harlem_Shake_v2__1_.mp4","type/mp4") }
+		processing{ false}
 		channel
 	end
 	factory :channel do
