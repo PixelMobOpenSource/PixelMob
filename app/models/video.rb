@@ -142,11 +142,7 @@ class Video
             self.video_views.length
     end
     def is_video
-        if(self.file.path != nil)
-            self.file.path.split('/').last != "_old_" && self.channel != nil && self.name != nil
-        else
-            false
-        end
+      self.name && self.channel_id && !self.processing
     end
     def is_processed
         if(self.file.path != nil)
