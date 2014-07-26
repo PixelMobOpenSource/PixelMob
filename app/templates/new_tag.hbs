@@ -6,9 +6,7 @@
 	</div>
 	<div class="form-group">
 		<label>Description</label>
-		{{view Ember.TextArea id="description" valueBinding=description}}</br>	
+		{{wysiwyg-editor content=description}}
 	</div>
 	<button class="btn btn-primary" {{action "save" controller}}>Save</button>
 </form>
-
-{{name}}
