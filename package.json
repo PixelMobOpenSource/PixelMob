@@ -31,7 +31,8 @@
     "grunt-neuter": "~0.5.0",
     "grunt-connect-proxy": "~0.1.6",
     "grunt-connect-rewrite": "~0.2.0",
-    "connect-modrewrite": "~0.5.11"
+    "connect-modrewrite": "~0.5.11",
+    "grunt-cli": "~0.1.13"
   },
   "engines": {
     "node": ">=0.8.0"
