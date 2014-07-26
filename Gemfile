@@ -8,14 +8,6 @@ gem 'rails', '4.0.0'
 gem 'bson_ext'
 gem 'mongo', '1.9.1'
 gem 'mongoid', :git => 'https://github.com/mongoid/mongoid.git', :ref => '85e146637503522939b3a6b942c84d1bbc55c00a'
-<<<<<<< HEAD
-gem 'tire'
-gem 'elasticsearch-model'
-gem 'elasticsearch-rails'
-=======
-gem 'mongoid-elasticsearch'
-
->>>>>>> d09459bc255019e1b1191dd660feae9684eb2a16
 gem 'mongoid_token', '~> 2.0.0', :git => 'https://github.com/apai4/mongoid_token.git'
 gem 'mongoid-elasticsearch'
 
