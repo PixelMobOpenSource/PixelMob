@@ -15,3 +15,12 @@ PixelMob.SigninView = Ember.View.extend
     script.setAttribute('data-color',"blue")
     script.setAttribute('class',"clef-button")
     $('#clef-container').append(script)
+    $('#userpass a').click (e) ->
+      e.preventDefault()
+      $(this).tab('show')
+    $('#clef a').click (e) ->
+      e.preventDefault()
+      $(this).tab('show')
+    $('#launchkey a').click (e) ->
+      e.preventDefault()
+      $(this).tab('show')
