@@ -40,7 +40,7 @@ describe "Videos" do
 		v = FactoryGirl.create(:video)
 		get '/api/videos/'
 			puts response.body
-			Video.exists(channel_id: true).exists(name: true).where(processing: false).last.id.to_s.should == JSON.parse(response.body)[:videos].last["id"]
+			Video.exists(channel_id: true).exists(name: true).where(processing: false).last.id.to_s.should == JSON.parse(response.body)["videos"].last["id"]
 		end
 	end
  describe "Get Video" do
