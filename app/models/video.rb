@@ -1,12 +1,12 @@
 class Video
     include Mongoid::Document
     include Mongoid::Timestamps
-    include Tire::Model::Search
-    include Tire::Model::Callbacks
     include Mongoid::Token
+    include Mongoid::Elasticsearch
+    field :id, type:              String
     field :name, type:            String
     field :description, type:     String
-    field :processing, type:      Boolean
+    field :processing, type:      Boolean, default: true
     field :is1080p, type:         Boolean
     field :is720p, type:          Boolean
     field :finished720p, type:    Boolean
@@ -17,12 +17,13 @@ class Video
     field :progress360p, type:    Integer, default: 0
     field :progress1080p, type:   Integer, default: 0
     field :progress720p, type:    Integer, default: 0
-    field :tempProgress, type:    Integer, default: 0
-    field :progress, type:        Integer, default: 0
+    field :tempProgress, type:    Float, default: 0
+    field :progress, type:        Float, default: 0
     field :file_tmp, type:        String
     field :vast, type:            String
     field :view_count, type:      Integer
     field :downVotedUsers, type:  Array, default: []
+    field :rank, type:            Float
     has_and_belongs_to_many :viewsUsers, :class_name => 'User', :inverse_of => :viewedVideos
     has_many :video_views
     has_many :annotations
@@ -32,13 +33,14 @@ class Video
     has_many :comments
     belongs_to :channel
     belongs_to :game
+    elasticsearch!
     token
     mount_uploader :file,VideoUploader
     store_in_background :file
     attr_accessor :is_video
-    attr_readonly :upVotes, :upVoted, :downVotes, :downVoted, :rank, :owned, :smallName, :votes, :views
+    attr_readonly :upVotes, :upVoted, :downVotes, :downVoted, :owned, :smallName, :votes, :views
     def upVotes
-            self.upVotedUsers.length
+    self.upVotedUsers.length
     end
     def progressCallback(progress)
         if(progress == 1) then
@@ -61,6 +63,9 @@ class Video
                 EM.stop
             end
         }
+        if self.tempProgress.round == 100
+            self.processing = false
+        end
     end
     def encodeCallback720p(format, opts)
         self.finished720p = true
@@ -70,11 +75,6 @@ class Video
     end
     def encodeCallback1080p(format, opts)
         self.finished1080p = true
-    end
-    def rank
-        timeRank = Math.log((self.created_at - Time.now).to_i.abs)
-        voteRank = Math.log([(self.upVotes - self.downVotes).to_i.abs,1].max) * 2
-        rank     = (timeRank + voteRank) / 3
     end
     def slug
         if(self.name)
