@@ -14,30 +14,30 @@ PixelMob.DashboardView = Ember.View.extend
     @set('ifVideos',true)
     @set('ifAllVideos',false)
     console.log('test')
-    $('.ckeditor').ckeditor()
   ).observes('channel_id')
   willDestroyElement: ->
     clone = this.$().clone()
     this.$().replaceWith(clone)
     clone.slideUp(500, "easeInOutQuad")
   didInsertElement: ->
-    this.$().slideUp(0);
-    this.$().slideDown(500);
+    this.$().slideUp(0)
+    this.$().slideDown(500)
     $('#editNav').sortable({placeholder: "list-group-item", connectWith: "#originNav"})
     $('#originNav').sortable({placeholder: "list-group-item", connectWith: "#editNav"})
   saveUser: ->
     console.log(@get('channel').get('id'))
     PixelMob.current_user.set('email',$('#email').val())
     PixelMob.current_user.get('transaction').commit()
-  saveChannel: ->
-    @get('channel').set('name',$('#name').val())
-    @get('channel').set('description',$('#channelDescription').val())
-    @get('channel').save
   actions:
     saveLinks: ->
       linksArray = []
       $('#editNav').children('li').each ->
-        linksArray.push({ name: $(@).data('name'), icon: $(@).children('i').attr('class'), action: $(@).data('action') })
+      console.log($(@))
+      console.log($(@).attr('href'))
+      if($(@).attr('href') == "dashboard")
+        linksArray.push({ name: $(@).children('span').text(), icon: $(@).children('i').attr('class'), action: $(@).attr('href'), isDash: true})
+      else
+        linksArray.push({ name: $(@).children('span').text(), icon: $(@).children('i').attr('class'), action: $(@).attr('href') })
       console.log(linksArray)
       PixelMob.current_user.set('links',linksArray)
       PixelMob.current_user.save()
