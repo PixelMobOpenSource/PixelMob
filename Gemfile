@@ -8,7 +8,8 @@ gem 'rails', '4.0.0'
 gem 'bson_ext'
 gem 'mongo', '1.9.1'
 gem 'mongoid', :git => 'https://github.com/mongoid/mongoid.git', :ref => '85e146637503522939b3a6b942c84d1bbc55c00a'
-gem 'tire'
+gem 'mongoid-elasticsearch'
+
 gem 'mongoid_token', '~> 2.0.0', :git => 'https://github.com/apai4/mongoid_token.git'
 #gem 'mongoid_fulltext'
 ## Mongoid - End
@@ -70,12 +71,6 @@ group :development do
 	gem "binding_of_caller"
 end
 ## BetterErrors - End
-## Guard - Start
-	group :development do
-		gem 'guard'
-		gem 'guard-shell'
-	end
-## Guard - End
 gem "faraday"
 gem "omniauth"
 gem "omniauth-clef"
