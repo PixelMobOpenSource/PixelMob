@@ -26,7 +26,7 @@ PixelMob::Application.routes.draw do
 				get 'subscriptions/videos' => 'user#subscriptions_videos', :module => :api
 				get 'current_user' => 'user#current', :module => :api
         post 'clefSignout' => 'user#logout_clef', :module => :api
-			end 
+			end
 		end
 		resources :channels
   end
@@ -36,7 +36,7 @@ mount Sidekiq::Web => '/sidekiq'
 	root :to => 'ember#index'
   get '*path' => 'ember#index'
   #devise_for :users,
- 
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
