@@ -1,14 +1,19 @@
 PixelMob.EditVideoView = Ember.View.extend
+	tags: PixelMob.Tag.find()
 	willDestroyElement: ->
 		clone = this.$().clone()
 		this.$().replaceWith(clone)
-		clone.slideUp(500, "easeInOutQuad") 
+		clone.slideUp(500, "easeInOutQuad")
 	didInsertElement: ->
 		this.$().slideUp(0);
 		this.$().slideDown(500);
 		videojs.Na = {}
 		videojs(@get('controller').get('content').get('id'))
-		$('#description').ckeditor()
+		$('#tag').select2()
+		tagsData = []
+		@get('controller').get('tags').forEach (tag) =>
+			tagsData.push({id: tag.get('id'), text: tag.get('name')})
+		$('#tag').select2("data", tagsData)
 	addButton: (type) ->
 		console.log("addButton")
 		button = $("<div class='btn btn-#{type}' style='position:relative;'>Temp</div>")
