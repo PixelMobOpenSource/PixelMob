@@ -56,8 +56,14 @@ class User
         return videos_sorted
     end
     def self.find_or_create_from_auth_hash(auth_hash)
-        if user = User.find_by({clef_id: auth_hash[:uid]})
+        if user = User.where({clef_id: auth_hash[:uid]}).first
                 user
+        elsif (user = User.where({email: auth_hash[:info][:email]}).first)
+                user.clef_id = auth_hash[:uid]
+                if(user.save!)
+                    return user
+                else
+                end
         else
                 User.create(
                         clef_id: auth_hash[:uid],
