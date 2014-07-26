@@ -1,7 +1,7 @@
-<form id="signUpForm" {{action signUp  on="submit"}}>
+<form id="signUpForm" {{action signUp on="submit"}}>
 	<fieldset>
 		<legend>Sign Up</legend>
-		{{partial user_form}}
+		{{user-form email=email password=password}}
 		{{input class="btn primary" type="submit" value="Sign Up" }}
 	</fieldset>
 </form>

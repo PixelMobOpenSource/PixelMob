@@ -1,28 +1,33 @@
-<form id="signIn" {{action signIn on="submit"}}>
-	<fieldset>
-		<legend>Sign In</legend>
-		{{user-form email=email password=password}}
-		{{input type="submit" class="btn btn-default"value="Sign In"}}
-	</fieldset>
-</form>
-<form  {{action launchkey on="submit"}}>
-	<fieldset>
-        <legend>LaunchKey</legend>
-        <div class="field-group">
-    		<label>LaunchKey Username</label>
-    		<div class="input-group">
-    			{{input name="username" class="form-control" type="text" value=username}}
-    			<span class="input-group-btn">
-                    {{input  type="submit" class="btn btn-default" value="Sign In"}}  
-    			</span>
-    		</div>
-        </div>
-	</fieldset>
-</form>
-<form>
-    <fieldset>
-        <legend>Clef</legend>
-        <div id="clef-container"></div>
-    </fieldset>
-</form>
+<legend>Sign In</legend>
+<formset>
+<ul class="nav nav-tabs">
+	<li class="active"><a href="#userpass" data-toggle="tab">Email + Password</a></li>
+	<li><a href="#clef" data-toggle="tab">Clef</a></li>
+	<li><a href="#launchkey" data-toggle="tab">Launchkey</a></li></ul>
+</ul>
+<div class="tab-content">
+	<div class="tab-pane active" id="userpass">
+		<form id="signIn" {{action signIn on="submit"}}>
+			{{user-form email=email password=password}}
+			{{input type="submit" class="btn btn-default"value="Sign In"}}
+		</form>
+	</div>
+	<div id="clef" class="tab-pane">
+			<div id="clef-container"></div>
+	</div>
+	<div class="tab-pane" id="launchkey">
+		<form  {{action launchkey on="submit"}}>
+			<div class="field-group">
+				<label>LaunchKey Username</label>
+				<div class="input-group">
+					{{input name="username" class="form-control" type="text" value=username}}
+					<span class="input-group-btn">
+										{{input  type="submit" class="btn btn-default" value="Sign In"}}
+					</span>
+				</div>
+			</div>
+		</form>
+	</div>
+</div>
+<formset>
 {{#link-to "signup"}}Sign Up{{/link-to}}

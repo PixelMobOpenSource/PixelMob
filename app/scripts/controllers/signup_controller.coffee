@@ -1,5 +1,6 @@
 PixelMob.SignupController = Ember.Controller.extend
+  actions:
     signUp: ->
-        console.log @getProperties('email','password')
-        user = PixelMob.User.createRecord @getProperties('email','password')
-        user.get('transaction').commit()
+      console.log @getProperties('email','password')
+      user = PixelMob.User.create @getProperties('email','password')
+      user.save()

@@ -1,3 +1,3 @@
 PixelMob.SigninRoute = Ember.Route.extend
-    signedIn: (router,event) ->
-        @transitionTo('subscriptions')
+  signedIn: (router,event) ->
+    @transitionTo('subscriptions')

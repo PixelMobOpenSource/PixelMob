@@ -23,7 +23,7 @@ PixelMob.Router.map ->
 	@resource "new_channel",
 		path: "/channels/new"
 	@resource "tag",
-	    path: "/tags/:tag_id"
+	  path: "/tags/:tag_id"
 	@resource "signin",
 		path: "/signin"
 	@resource "signoff",
@@ -36,7 +36,7 @@ PixelMob.Router.map ->
 		path: "/v/s/"
 		queryParams: ['search','page']
 	@resource "videos",
-        path: "/v/p/:page"
+    path: "/v/p/:page"
 	@resource "game",
 		path: "/g/:game_id"
 	@resource "game",

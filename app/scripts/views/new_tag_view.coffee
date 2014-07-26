@@ -1,3 +1,1 @@
-PixelMob.NewTagView = Ember.View.extend
-	didInsertElement: ->
-		$("#description").ckeditor()
+PixelMob.NewTagView = Ember.View.extend({})

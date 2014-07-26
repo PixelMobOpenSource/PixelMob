@@ -1,7 +1,7 @@
 <div id="main">
     <div class="container clear-top">
         <div class="col-sm-10 col-md-1">
-            <div class="navContainer">
+            <div class="navContainer" id="nanGuft">
                     <div class="nav">
                         {{#view PixelMob.SlidableNavView}}
                             <div class="list-group nav-list-group" id="nav">
@@ -10,29 +10,45 @@
                                     <img  class="visible-md-inline" src="/images/PixelMobWide.png" width="50%"></img>
                                 </a>
                                 <div id="hiddenDefaultElems">
-                                    {{#link-to "subscriptions" class="navItem list-group-item hiddenDefaultElem navTooltip" }}
-                                        <i class="fa fa-home fa-3x"> </i>
-                                        <span class="extraText visible-md-inline">Home</span>
-                                    {{/link-to}}
-                                    {{#if controllers.currentUser }}
-                                        {{#link-to 'upload_container' data-toggle="tooltip" title="first tooltip" class="navItem navTooltip list-group-item hiddenDefaultElem"  }}
-                                            <i class="fa fa-upload fa-3x"> </i>
-                                            <span class="extraText visible-md-inline">Upload</span>
+                                    {{#unless controllers.currentUser}}
+                                        {{#link-to "subscriptions" class="navItem list-group-item hiddenDefaultElem navTooltip" }}
+                                            <i class="fa fa-home fa-3x"> </i>
+                                            <span class="extraText visible-md-inline">Home</span>
                                         {{/link-to}}
-                                        {{#link-to "signoff" class="navItem navTooltip list-group-item hiddenDefaultElem"  }}
-                                            <i class="fa fa-sign-out fa-3x"> </i>
-                                            <span class="extraText visible-md-inline">Sign Out</span>
-                                        {{/link-to}}
-                                        {{#link-to "dashboard" class="navItem navtooltip list-group-item hiddenDefaultElem" }}
-                                            <img width="45px"  {{bindAttr src="controllers.currentUser.gravatar_url"}}></img>
-                                            <span class="extraText avatartext visible-md-inline">Dashboard</span>
-                                        {{/link-to}}
+                                        {{#if controllers.currentUser }}
+                                            {{#link-to 'upload_container' data-toggle="tooltip" title="first tooltip" class="navItem navTooltip list-group-item hiddenDefaultElem"  }}
+                                                <i class="fa fa-upload fa-3x"> </i>
+                                                <span class="extraText visible-md-inline">Upload</span>
+                                            {{/link-to}}
+                                            {{#link-to "signoff" class="navItem navTooltip list-group-item hiddenDefaultElem"  }}
+                                                <i class="fa fa-sign-out fa-3x"> </i>
+                                                <span class="extraText visible-md-inline">Sign Out</span>
+                                            {{/link-to}}
+                                            {{#link-to "dashboard" class="navItem navtooltip list-group-item hiddenDefaultElem" }}
+                                                <img width="45px"  {{bind-attr src="controllers.currentUser.gravatar_url"}}></img>
+                                                <span class="extraText avatartext visible-md-inline">Dashboard</span>
+                                            {{/link-to}}
+                                        {{else}}
+                                            {{#link-to "signin" class="navItem navTooltip list-group-item hiddenDefaultElem" }}
+                                                <i class="fa fa-sign-in fa-3x"> </i>
+                                                <span class="extraText visible-md-inline">Sign In</span>
+                                            {{/link-to}}
+                                        {{/if}}
                                     {{else}}
-                                        {{#link-to "signin" class="navItem navTooltip list-group-item hiddenDefaultElem" }}
-                                            <i class="fa fa-sign-in fa-3x"> </i>
-                                            <span class="extraText visible-md-inline">Sign In</span>
-                                        {{/link-to}}
-                                    {{/if}}
+                                      {{#each link in controllers.currentUser.links}}
+                                          {{#unless link.isDash}}
+                                            {{#link-to link.action class="navItem navtooltip list-group-item hiddenDefaultElem" }}
+                                                <i {{bind-attr class="link.icon"}}></i>
+                                                <span class="extraText visible-md-inline">{{link.name}}</span>
+                                            {{/link-to}}
+                                          {{else}}
+                                            {{#link-to "dashboard" class="navItem navtooltip list-group-item hiddenDefaultElem" }}
+                                                <img width="45px"  {{bind-attr src="controllers.currentUser.gravatar_url"}}></img>
+                                                <span class="extraText avatartext visible-md-inline">Dashboard</span>
+                                            {{/link-to}}
+                                          {{/unless}}
+                                      {{/each}}
+                                    {{/unless}}
                                     <a class="list-group-item hiddenDefaultElem visible-xs ">
                                         {{#view PixelMob.SearchView class="" }}
                                             <form class="form-inline ">

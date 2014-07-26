@@ -3,7 +3,7 @@
 	    <div class="btn-group">
     		{{#if owned}}
     			{{#link-to "edit_video" this class="btn btn-primary btn-mini"}}
-    				Edit 
+    				Edit
     			{{/link-to}}
     		{{/if}}
     	<div class="btn-group">
@@ -17,40 +17,41 @@
 		</ul>
 	</div>
 	{{#if channel.subscribed }}<button {{action "unsubscribe" target="view"}} id="subscribeButton" class="btn btn-danger">Unsubscribe</button>{{else}} <button {{action "subscribe" target="view"}} class="btn btn-primary" id="subscribeButton">Subscribe</button>{{/if}}
+		{{#link-to "channel" channel class="btn btn-default channelAvatar"}}
+            <img {{bind-attr src="channel.avatar.avatar.url"}}></img>
+            {{channel.name}}
+         {{/link-to}}
 		</div>
-		{{name}} 
-		<span style="font-size:15px;">
-			by {{#link-to "channel" channel}}
-				{{channel.name}}
-			{{/link-to}}
-			{{#if game}}
-    			playing
-    			{{#link-to game game}}
-    				{{game.title}}
-    			{{/link-to}}
-    		{{/if}}
-		</span>
+		{{name}}
 		<span style="font-size:12px;">
 		    {{views}} <i class="fa fa-eye"></i>
 		    </span>
 	</div>
 </div>
-<div>		
+<div>
 
 </div>
-<video {{bindAttr id="id"}} controls class="video-js vjs-default-skin " preload="none" {{bindAttr poster=file.file.poster.url}}>
-		{{#if is1080p}}<source {{bindAttr src=file.file.hd1080p.url}}  type="video/mp4" data-res="1080p"/>{{/if}}
-		{{#if is720p}}<source {{bindAttr src=file.file.hd720p.url}} type="video/mp4" data-res="720p"/>{{/if}}
-		<source {{bindAttr src=file.file.sd.url}} type="video/mp4" data-res="360p" />
+<video {{bind-attr id="id"}} controls class="video-js vjs-default-skin " preload="none" {{bind-attr poster=file.file.poster.url}}>
+		{{#if is1080p}}<source {{bind-attr src=file.file.hd1080p.url}}  type="video/mp4" data-res="1080p"/>{{/if}}
+		{{#if is720p}}<source {{bind-attr src=file.file.hd720p.url}} type="video/mp4" data-res="720p"/>{{/if}}
+		<source {{bind-attr src=file.file.sd.url}} type="video/mp4" data-res="360p" />
 </video>
-<h5>Tags</h5>
-{{#each tag in tags}}
-	{{#link-to "tag" tag class="btn btn-primary btn-sm"}}{{tag.name}}{{/link-to}}
-{{/each}}
-<img id="companionAd1"> </img>
-<p>{{{description}}}</p>
+<div class="row videoInfo">
+	<div class="col-sm-6">
+		{{#if description}}
+			{{{description}}}
+		{{/if}}
+	</div>
+	<div class="col-sm-6">
+		{{#if tags}}
+			{{#each tag in tags}}
+				{{#link-to "tag" tag class="btn btn-info btn-sm"}}{{tag.name}}{{/link-to}}
+			{{/each}}
+		{{/if}}
+	</div>
+</div>
 {{#view PixelMob.CommentView}}
-	<button class="btn btn-primary btn-mini newCommentButton" {{action "newComment" target="view"}} {{bindAttr id="comment.id"}}>Reply</button>
+	<button class="btn btn-primary btn-mini newCommentButton" {{action newComment target="view"}} {{bind-attr id="comment.id"}}><i class="fa fa-comment"></i></button>
 {{/view}}
 <div id="comments">
 	{{#each comment in comments}}

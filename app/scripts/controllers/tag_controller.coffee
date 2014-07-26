@@ -1,3 +1,3 @@
 PixelMob.TagController = Ember.ObjectController.extend(
-    needs: ["currentUser"]
+  needs: ["currentUser"]
 )

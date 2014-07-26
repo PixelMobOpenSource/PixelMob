@@ -1,6 +1,6 @@
 <div class="field-group">
 	<label>Name</label>
-	<input class="form-control" id="name" {{bindAttr value="view.channel.name"}} name="name" type="TEXT"/>
+	<input class="form-control" id="name" {{bind-attr value="view.channel.name"}} name="name" type="TEXT"/>
 </div>
 <div class="field-group">
 	<label>Avatar</label>
@@ -8,5 +8,6 @@
 </div>
 <div class="field-group">
 	<label>Description</label>
-	{{view Ember.TextArea class="ckeditor" id="channelDescription" valueBinding="channel.description"}}</br>
+	{{wysiwyg-editor content=channel.description}}
+	<br/>
 </div>

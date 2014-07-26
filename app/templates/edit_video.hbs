@@ -9,16 +9,12 @@
 							<span class="caret"></span>
 						</a>
 						<ul class="dropdown-menu">
-							{{#if is1080p}}<li><a tabindex="-1" {{action "changeSrc" file.file.hd1080p.url target="view"}}>1080p</a></li>{{/if}}
-							{{#if is720p}}<li><a tabindex="-1" {{action "changeSrc" file.file.hd720p.url target="view"}} href="#">720p</a></li>{{/if}}
-							<li><a tabindex="-1" {{action "changeSrc" file.file.sd.url target="view"}}>360p</a></li>
-							<li class="divider"></li>
 							<li><a tabindex="-1" {{action "large" target="view"}}>Large</a></li>
 							<li><a tabindex="-1" {{action "small" target="view"}}>Small</a></li>
 						</ul>
 					</div>
 				</span>
-				<input type="text" id="name" style="width:250px;" class="form-control input-md" {{bindAttr value="name"}}/>
+				{{input type="text" id="name" class="form-control" name="name" value=name}}
 			</div>
 		</form>
 		<span style="font-size:15px;">
@@ -37,15 +33,22 @@
 		    </span>
 	</div>
 </div>
-<div class="buttons">		
+<div class="buttons">
 	<button {{action "addButton" "primary" target="view"}} class="btn btn-primary">Add Me</button>
 	<button {{action "addButton" "default" target="view"}} class="btn btn-default">Add Me</button>
 </div>
-<video {{bindAttr id="id"}} controls class="video-js vjs-default-skin " preload="none" width="640" height="360" {{bindAttr poster=file.file.poster.url}}>
-		{{#if is1080p}}<source {{bindAttr src=file.file.hd1080p.url}} type="video/mp4"/>{{/if}}
-		{{#if is720p}}<source {{bindAttr src=file.file.hd720p.url}} type="video/mp4"/>{{/if}}
-		{{#unless is720p}}<source {{bindAttr src=file.file.sd.url}} type="video/mp4"/>{{/unless}}
+<video {{bind-attr id="id"}} controls class="video-js vjs-default-skin " preload="none" width="640" height="360" {{bind-attr poster=file.file.poster.url}}>
+		{{#if is1080p}}<source {{bind-attr src=file.file.hd1080p.url}} type="video/mp4"/>{{/if}}
+		{{#if is720p}}<source {{bind-attr src=file.file.hd720p.url}} type="video/mp4"/>{{/if}}
+		{{#unless is720p}}<source {{bind-attr src=file.file.sd.url}} type="video/mp4"/>{{/unless}}
 </video>
-<div class=""></div>
-{{view Ember.TextArea class="wysihtml5" id="description" valueBinding="description"}}</br>
-<button class="btn btn-primary" {{action "save" target="view"}}>Save</button>
+{{wysiwyg-editor content=description}}
+<div class='form-group'>
+	<label for='tag'>Tags</label>
+	<select  id='tag' style="width:100%;" multiple class='uploadFormElement' name='tags'>
+		{{#each tag in view.tags}}
+			<option {{bind-attr value="tag.id"}}>{{tag.name}}</option>
+		{{/each}}
+	</select>
+</div>
+<button class="btn btn-primary" {{action "save"}}>Save</button>
