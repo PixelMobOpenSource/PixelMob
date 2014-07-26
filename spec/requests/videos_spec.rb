@@ -47,6 +47,7 @@ describe "Videos" do
 	end
  describe "Get Video" do
 	it "Get a video" do
+		Video.all.delete
 		v = FactoryGirl.create(:video)
 		get '/api/videos'
 		id = JSON.parse(response.body)["videos"].last["id"]
