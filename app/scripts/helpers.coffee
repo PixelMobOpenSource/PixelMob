@@ -1,2 +1,2 @@
 $(document).ready ->
-    PixelMob.ReloadUser()
+  PixelMob.ReloadUser()

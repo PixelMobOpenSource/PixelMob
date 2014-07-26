@@ -2,12 +2,12 @@
 <div class="comment">
 	<div class="media">
 		<a class="pull-left">
-			<img class="media-object" {{bindAttr src=comment.user.gravatar_url}}/>
+			<img class="media-object" {{bind-attr src=comment.user.gravatar_url}}/>
+			<button class="btn btn-primary btn-mini newCommentButton" {{action "newComment" target="view"}} {{bind-attr id="comment.id"}}><i class="fa fa-comment"></i></button>
 		</a>
 		<div class="media-body">
 			<h5 class="media-heading">{{comment.user.email}}</h5>
 			{{{comment.content}}}
-			<button class="btn btn-primary btn-mini newCommentButton" {{action "newComment" target="view"}} {{bindAttr id="comment.id"}}>Reply</button>
 			{{#each comment in comment.child_comments}}
 				{{video-comment comment=comment}}
 			{{/each}}
