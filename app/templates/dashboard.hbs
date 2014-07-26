@@ -1,25 +1,22 @@
 <legend>Dashboard
 {{channel-select hideLabel="true" channels=controllers.currentUser.channels channel_id=controller.channel_id}}
-
 </legend>
-{{name}}
+{{#if controller.channel_id}}
 <div class="row">
-{{channel.name}}
 <h4 class="dashboardTitle" >Videos</h4>
 <ul class="thumbnails">
-	{{#each video in videos}}
+	{{#each video in controller.channel.videos}}
 		{{video-thumbnail video=video currentUser=controllers.currentUser}}
 	{{/each}}
 </ul>
 </div>
-{{#if view.ifVideos}}
 <div class="col-sm-6">
 <h4 class="dashboardTitle">Edit Channel</h4>
 	<label>Name</label>
-	<input id="name" class="form-control" {{bindAttr value="view.channel.name"}} name="name" type="TEXT"/></br>
+	{{input type="test" class="form-control" value=controller.channel.name name="name" id="name"}}
 	<label>Description</label>
-	{{view Ember.TextArea class="ckeditor" id="channelDescription" valueBinding="channel.description"}}</br>
-	<button id="editChannel" {{action "saveChannel" target="view"}}class="btn btn-default">Save Channel</button>
+	{{wysiwyg-editor content=channel.description}}
+	<button id="editChannel" {{action "saveChannel"}}class="btn btn-default">Save Channel</button>
 </div>
 {{/if}}
 <div class="col-sm-6">
