@@ -1,6 +1,3 @@
-var http = require('http'),
-    httpProxy = require('http-proxy');
-//
-// Create your proxy server
-//
-httpProxy.createServer(9000, 'localhost').listen(88);
+var httpProxy = require('http-proxy');
+
+var proxy = httpProxy.createProxyServer({target: 'http://localhost:9000'}).listen(88)
