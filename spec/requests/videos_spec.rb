@@ -38,9 +38,6 @@ describe "Videos" do
 	describe "All Videos" do
 		it "Get all videos and return json" do
 		v = FactoryGirl.create(:video)
-		while !v.is_video do
-			sleep(1)
-		end
 		get '/api/videos/'
 			Video.exists(channel_id: true).exists(name: true).where(processing: false).last.id.to_s.should == JSON.parse(response.body)[:videos].last["id"]
 		end
