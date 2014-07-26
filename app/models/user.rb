@@ -20,6 +20,8 @@ class User
     field :last_sign_in_ip, :type        => String
     field :clef_id, :type                => String
     field :links, :type                  => Array, :default => [{name: "Home",icon: "fa fa-home fa-3x",link: "subscriptions"}, {name: "Upload",icon: "fa fa-upload fa-3x",link: "upload_container"}]
+    field :subscriptions_video_ids       => Array
+    field :subscription_channel_ids      => Array
     has_many :video_views
     has_and_belongs_to_many :channels, :inverse_of => :users
     has_many :comments
@@ -27,6 +29,7 @@ class User
     has_and_belongs_to_many :subscriptions_tags, :class_name => 'Tag', :inverse_of => :subscriber
     has_and_belongs_to_many :downVotedVideos , :class_name => 'Video', :inverse_of => :downVotedUsers
     has_and_belongs_to_many :upVotedVideos , :class_name => 'Video', :inverse_of => :upVotedUsers
+    has_and_belongs_to_many :tags, :inverse_of => :users
     def self.current
         Thread.current[:user]
     end
