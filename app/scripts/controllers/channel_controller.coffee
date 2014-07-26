@@ -1,2 +1,4 @@
 PixelMob.ChannelController = Ember.ObjectController.extend
-    needs: ["currentUser"]
+  needs: ["currentUser"]
+  queryParams: ['video_page']
+  video_page: null
