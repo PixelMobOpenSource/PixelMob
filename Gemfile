@@ -9,7 +9,11 @@ gem 'bson_ext'
 gem 'mongo', '1.9.1'
 gem 'mongoid', :git => 'https://github.com/mongoid/mongoid.git', :ref => '85e146637503522939b3a6b942c84d1bbc55c00a'
 gem 'tire'
+gem 'elasticsearch-model'
+gem 'elasticsearch-rails'
 gem 'mongoid_token', '~> 2.0.0', :git => 'https://github.com/apai4/mongoid_token.git'
+gem 'mongoid-elasticsearch'
+
 #gem 'mongoid_fulltext'
 ## Mongoid - End
 gem 'foreman'
@@ -22,7 +26,7 @@ gem 'launchkey', :github  => 'wisesascha/launchkey-ruby'
 gem 'httparty'
 gem 'figaro'
 gem 'faye'
-gem	'redis'
+gem 'redis'
 gem "eventmachine"
 ## Assets - Start
 group :assets do
@@ -31,6 +35,8 @@ group :assets do
   gem 'uglifier', '>= 1.3.0'
   gem 'haml-rails'
 end
+
+
 gem "font-awesome-rails"
 gem 'jquery-rails'
 ## Assets - End
@@ -57,11 +63,11 @@ gem 'capybara'
 
 ## Carrierwave - Start
 gem 'carrierwave'
-gem 'carrierwave-video', :github => 'wisesascha/carrierwave-video'
+gem 'carrierwave-video', :github => 'wisesascha/carrierwave-video', :ref => '3045ed4ff4e803e6507c96619d9a8e4d44f4c006'
 gem 'carrierwave-video-thumbnailer'
 gem 'carrierwave_backgrounder'
 gem 'carrierwave-mongoid', :require => 'carrierwave/mongoid'
-gem 'streamio-ffmpeg', :github => 'wisesascha/streamio-ffmpeg'
+gem 'streamio-ffmpeg'
 ## Carrierwave - End
 
 ## BetterErrors - Start
