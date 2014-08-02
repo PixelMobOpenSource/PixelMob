@@ -52,7 +52,7 @@ gem "rspec-rails", :group => [:test, :development]
 gem 'forgery', '0.5.0'
 gem "factory_girl_rails"
 gem 'simplecov', :require => false
-gem 'simplecov-rcov', :require => false
+gem 'simplecov-teamcity-summary'
 gem 'capybara'
 ## Tests - End
 
