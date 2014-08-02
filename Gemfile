@@ -51,7 +51,7 @@ gem 'sinatra', '>= 1.3.0', :require => nil
 gem "rspec-rails", :group => [:test, :development]
 gem 'forgery', '0.5.0'
 gem "factory_girl_rails"
-gem 'coveralls', require: false
+gem 'simplecov', :require => false, :group => :test
 gem 'capybara'
 ## Tests - End
 
