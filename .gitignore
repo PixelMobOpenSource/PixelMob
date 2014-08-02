@@ -4,6 +4,7 @@
 .tmp
 tags
 public/uploads/
+public/scripts
 .DS_Store
 coverage/
 node_modules
