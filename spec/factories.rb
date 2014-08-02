@@ -15,7 +15,7 @@ FactoryGirl.define do
 		name { Forgery(:lorem_ipsum).words(1) }
 		factory :channel_with_videos do
 			ignore do
-				videos_count 5
+				videos_count 2
 			end
 			after(:create) do |channel, evaluator|
 				FactoryGirl.create_list(:video , 1, channel: channel)
